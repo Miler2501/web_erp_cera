@@ -33,6 +33,7 @@
     "@angular/router": "^20.3.0",
     "@angular/ssr": "^20.3.2",
     "@ngneat/overview": "^7.0.0",
+    "chart.js": "^4.5.1",
     "express": "^5.1.0",
     "ngx-toastr": "^19.1.0",
     "rxjs": "~7.8.0",

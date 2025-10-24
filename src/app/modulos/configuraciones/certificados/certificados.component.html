@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Certificados</div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group mb-2">
+              <label>Emisor</label>
+              <input type="text" class="form-control" formControlName="emisor" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group mb-2">
+              <label>Sujeto</label>
+              <input type="text" class="form-control" formControlName="sujeto" />
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group mb-2">
+              <label>Fecha Inicio</label>
+              <input type="date" class="form-control" formControlName="fechaInicio" />
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group mb-2">
+              <label>Fecha Caducidad</label>
+              <input type="date" class="form-control" formControlName="fechaCaducidad" />
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group mb-2">
+              <label>Días Restantes</label>
+              <input type="number" class="form-control" formControlName="diasRestantes" [disabled]="true" />
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12 text-end">
+            <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="onSubmit()">Guardar</button>
+          </div>
+        </div>
+      </form>
+      <div class="table-responsive mt-4">
+        <table class="table table-bordered table-sm">
+          <thead class="thead-light">
+            <tr>
+              <th>Emisor</th>
+              <th>Sujeto</th>
+              <th>Fecha Inicio</th>
+              <th>Fecha Caducidad</th>
+              <th>Días Restantes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cert of certificados">
+              <td>{{ cert.emisor }}</td>
+              <td>{{ cert.sujeto }}</td>
+              <td>{{ cert.fechaInicio | date:'dd/MM/yyyy' }}</td>
+              <td>{{ cert.fechaCaducidad | date:'dd/MM/yyyy' }}</td>
+              <td>{{ cert.diasRestantes }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

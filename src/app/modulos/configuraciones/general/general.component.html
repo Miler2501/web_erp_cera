@@ -1,0 +1,138 @@
+<div class="container-fluid">
+  <!-- Card: Tipos de documentos por defecto para movimientos -->
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Tipos de documentos por defecto para movimientos</div>
+    <div class="card-body">
+      <form [formGroup]="formDocumentos">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="docCliente" class="form-label">Tipo Documento Cliente:</label>
+                <select id="docCliente" class="form-control" formControlName="docCliente">
+                <option value="ruc">REGISTRO UNICO DE CONTRIBUYENTES</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="docProveedor" class="form-label">Tipo Documento Proveedor:</label>
+                <select id="docProveedor" class="form-control" formControlName="docProveedor">
+                <option value="ruc">REGISTRO UNICO DE CONTRIBUYENTES</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="docVendedor" class="form-label">Tipo Documento Vendedor:</label>
+                <select id="docVendedor" class="form-control" formControlName="docVendedor">
+                <option value="ruc">REGISTRO UNICO DE CONTRIBUYENTES</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="docTransportista" class="form-label">Tipo Documento Transportista:</label>
+                <select id="docTransportista" class="form-control" formControlName="docTransportista">
+                <option value="ruc">REGISTRO UNICO DE CONTRIBUYENTES</option>
+                </select>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Card: Configuraciones para retenciones -->
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Configuraciones para retención</div>
+    <div class="card-body">
+      <form [formGroup]="formRetencion">
+        <div class="row mb-3">
+            <div class="col-md-6 mb-3">
+              <label for="importeMax" class="form-label">Importe máximo exceptuado</label>
+              <input id="importeMax" type="number" class="form-control" formControlName="importeMax" />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="porcentajeRet" class="form-label">Porcentaje de Retención</label>
+              <input id="porcentajeRet" type="number" class="form-control" formControlName="porcentajeRet" />
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Card: Otras Configuraciones -->
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Otras Configuraciones</div>
+    <div class="card-body">
+      <form [formGroup]="formOtras">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="modificarVoucher" formControlName="modificarVoucher" />
+              <label class="form-check-label" for="modificarVoucher">Modificar datos del voucher</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="visualizarEjercicio" formControlName="visualizarEjercicio" />
+              <label class="form-check-label" for="visualizarEjercicio">Visualizar el ejercicio anterior en los exploradores</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="habilitarMedioPago" formControlName="habilitarMedioPago" />
+              <label class="form-check-label" for="habilitarMedioPago">Habilitar dirección de medio pago</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="modificarCheque" formControlName="modificarCheque" />
+              <label class="form-check-label" for="modificarCheque">Modificar el número de cheque manualmente</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="aplicarISC" formControlName="aplicarISC" />
+              <label class="form-check-label" for="aplicarISC">Aplicar ISC</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="calcularDetraccion" formControlName="calcularDetraccion" />
+              <label class="form-check-label" for="calcularDetraccion">Calcular monto detracción con decimales en compra y venta</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="deshabilitarCarga" formControlName="deshabilitarCarga" />
+              <label class="form-check-label" for="deshabilitarCarga">Deshabilitar carga inicial de selector para Compra e Inventario</label>
+            </div>
+            <div class="mb-2">
+              <label for="decimalesDetalles" class="form-label">Número de decimales para detalles:</label>
+              <input id="decimalesDetalles" type="number" class="form-control" formControlName="decimalesDetalles" />
+            </div>
+            <div class="mb-2">
+              <label for="inactividad" class="form-label">Tiempo de inactividad máximo (en minutos):</label>
+              <input id="inactividad" type="number" class="form-control" formControlName="inactividad" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="registrarSeguimiento" formControlName="registrarSeguimiento" />
+              <label class="form-check-label" for="registrarSeguimiento">Registrar seguimiento de movimiento - Contabilidad</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="deshabilitarAlertas" formControlName="deshabilitarAlertas" />
+              <label class="form-check-label" for="deshabilitarAlertas">Deshabilitar Configuración antigua de Alertas</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="habilitarNombresRepetidos" formControlName="habilitarNombresRepetidos" />
+              <label class="form-check-label" for="habilitarNombresRepetidos">Habilitar la creación de productos con nombres repetidos</label>
+            </div>
+            <div class="mb-2">
+              <label for="comunicacionEmpresas" class="form-label">Comunicación con otras empresas:</label>
+              <select id="comunicacionEmpresas" class="form-control" formControlName="comunicacionEmpresas">
+                <option value="">Seleccione</option>
+              </select>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="activarTraslado" formControlName="activarTraslado" />
+              <label class="form-check-label" for="activarTraslado">Activar traslado a empresas relacionadas</label>
+            </div>
+            <div class="mb-2">
+              <label for="empresasTraslado" class="form-label">Empresas relacionadas a realizar traslado:</label>
+              <select id="empresasTraslado" class="form-control" formControlName="empresasTraslado">
+                <option value="">Seleccione</option>
+              </select>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="trasladarArbitrarios" formControlName="trasladarArbitrarios" />
+              <label class="form-check-label" for="trasladarArbitrarios">Trasladar documentos arbitrarios</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+/* Estilos básicos para el card de información de empresa */
+.img-fluid {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 4px;
+}
