@@ -1,0 +1,135 @@
+<div class="container-fluid">
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Información de Empresa</div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-2">
+              <label>R.U.C.:</label>
+              <input type="text" class="form-control" formControlName="ruc" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Fecha Inicio:</label>
+              <input type="date" class="form-control" formControlName="fechaInicio" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Razón Social:</label>
+              <input type="text" class="form-control" formControlName="razonSocial" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Ejercicio:</label>
+              <input type="text" class="form-control" formControlName="ejercicio" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Nombre Comercial:</label>
+              <input type="text" class="form-control" formControlName="nombreComercial" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Dirección:</label>
+              <input type="text" class="form-control" formControlName="direccion" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Urbanización o Zona:</label>
+              <input type="text" class="form-control" formControlName="urbanizacion" />
+            </div>
+            <div class="form-group mb-2">
+              <label>País:</label>
+              <input type="text" class="form-control" formControlName="pais" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Ubigeo:</label>
+              <input type="text" class="form-control" formControlName="ubigeo" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Teléfono:</label>
+              <input type="text" class="form-control" formControlName="telefono" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Correo:</label>
+              <input type="email" class="form-control" formControlName="correo" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Sector:</label>
+              <input type="text" class="form-control" formControlName="sector" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Representante Legal:</label>
+              <input type="text" class="form-control" formControlName="representanteLegal" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Página Empresa:</label>
+              <input type="text" class="form-control" formControlName="paginaEmpresa" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Cuenta Bancaria (Banco de la Nación):</label>
+              <input type="text" class="form-control" formControlName="cuentaBancaria" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Tipo Documento Representante:</label>
+              <input type="text" class="form-control" formControlName="tipoDocRepresentante" />
+            </div>
+            <div class="form-group mb-2">
+              <label>N° Tipo Documento:</label>
+              <input type="text" class="form-control" formControlName="numTipoDoc" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Participaciones de Trabajadores:</label>
+              <input type="text" class="form-control" formControlName="participaciones" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Moneda Principal:</label>
+              <input type="text" class="form-control" formControlName="monedaPrincipal" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Moneda Secundaria:</label>
+              <input type="text" class="form-control" formControlName="monedaSecundaria" />
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" formControlName="agenteRetencion" />
+              <label class="form-check-label">Es agente de retención</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" formControlName="agentePercepcion" />
+              <label class="form-check-label">Es agente de percepción</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" formControlName="buenContribuyente" />
+              <label class="form-check-label">Es buen contribuyente</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-2">
+              <label>Firma del representante</label>
+              <input type="text" class="form-control" formControlName="firmaRepresentante" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Ruta de Firma</label>
+              <input type="text" class="form-control" formControlName="rutaFirma" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Archivo (.pfx)</label>
+              <input type="text" class="form-control" formControlName="archivoPfx" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Contraseña</label>
+              <input type="password" class="form-control" formControlName="contrasena" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Logo de la empresa</label>
+              <input type="file" class="form-control" (change)="onLogoChange($event)" accept="image/*" />
+            </div>
+            <div class="form-group mb-2">
+              <img [src]="logoPreview || 'assets/logo.png'" alt="Logo" class="img-fluid" style="max-height: 120px;" />
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12 text-end">
+            <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="onSubmit()">Aplicar cambios</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

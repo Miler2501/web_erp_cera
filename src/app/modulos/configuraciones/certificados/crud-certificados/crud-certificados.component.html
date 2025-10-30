@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Mantenimiento de Certificados</div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <div class="form-group mb-2">
+              <label>Archivo:</label>
+              <input type="text" class="form-control" formControlName="archivo" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Archivo (.pfx):</label>
+              <input type="text" class="form-control" formControlName="archivoPfx" />
+            </div>
+            <div class="form-group mb-2">
+              <label>Contraseña:</label>
+              <input type="password" class="form-control" formControlName="contrasena" />
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-bordered table-sm">
+                <thead class="thead-light">
+                  <tr>
+                    <th></th>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of usuarios; let i = index">
+                    <td>
+                      <input type="checkbox" [formControl]="getUsuarioControl(i)" />
+                    </td>
+                    <td>{{ user.usuario }}</td>
+                    <td>{{ user.nombre }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-end">
+            <button type="submit" class="btn btn-success me-2" [disabled]="form.invalid">Aceptar</button>
+            <button type="button" class="btn btn-danger">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

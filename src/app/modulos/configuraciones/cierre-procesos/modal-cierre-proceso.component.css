@@ -1,0 +1,12 @@
+.mat-dialog-title {
+  background: #337ab7;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px 4px 0 0;
+}
+.border {
+  border: 1px solid #e3e6f0;
+}
+.fw-bold {
+  font-weight: bold;
+}

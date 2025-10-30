@@ -1,0 +1,100 @@
+<div class="container-fluid">
+  <!-- Card: Paso de Movimientos -->
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Paso de Movimientos</div>
+    <div class="card-body">
+      <form [formGroup]="formPasoMovimientos">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-check mb-2" *ngFor="let mov of pasoMovimientosIzq">
+              <input class="form-check-input" type="checkbox" [id]="mov.id" [formControlName]="mov.id" />
+              <label class="form-check-label" [for]="mov.id">{{ mov.label }}</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-check mb-2" *ngFor="let mov of pasoMovimientosDer">
+              <input class="form-check-input" type="checkbox" [id]="mov.id" [formControlName]="mov.id" />
+              <label class="form-check-label" [for]="mov.id">{{ mov.label }}</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Card: Inventario -->
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Inventario</div>
+    <div class="card-body">
+      <form [formGroup]="formInventario">
+        <div class="row mb-3">
+          <label class="col-md-3 col-form-label">Tipo Control Inventario</label>
+          <div class="col-md-9">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="tipoInventario" id="peps" value="peps" />
+              <label class="form-check-label" for="peps">PEPS</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="tipoInventario" id="promedio" value="promedio" />
+              <label class="form-check-label" for="promedio">PROMEDIO</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="kardexAlmacen" formControlName="kardexAlmacen" />
+              <label class="form-check-label" for="kardexAlmacen">Inventario Kardex por Almacén</label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="kardexUnidad" formControlName="kardexUnidad" />
+              <label class="form-check-label" for="kardexUnidad">Inventario Kardex por Unidad de Medida</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Módulo a Usar</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="moduloInventario" id="inventario1" value="inventario1" />
+              <label class="form-check-label" for="inventario1">Inventario 1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="moduloInventario" id="inventario2" value="inventario2" />
+              <label class="form-check-label" for="inventario2">Inventario 2</label>
+            </div>
+            <label class="form-label">Módulo a Usar</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="moduloCompras" id="compras1" value="compras1" />
+              <label class="form-check-label" for="compras1">Compras 1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="moduloCompras" id="compras2" value="compras2" />
+              <label class="form-check-label" for="compras2">Compras 2</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <span class="text-success">Ya cuenta con una configuración, las modificaciones realizadas serán bajo su propia responsabilidad</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Card: Manifiesto de Carga -->
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Manifiesto de Carga</div>
+    <div class="card-body">
+      <form [formGroup]="formManifiesto">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="manifiesto" id="version1" value="version1" />
+          <label class="form-check-label" for="version1">Versión 1</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="manifiesto" id="version2" value="version2" />
+          <label class="form-check-label" for="version2">Versión 2</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

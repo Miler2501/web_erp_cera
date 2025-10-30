@@ -9,40 +9,56 @@
   </a>
 
   <!-- Divider -->
-  <hr class="sidebar-divider my-0">
+  <hr class="sidebar-divider my-0" />
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
     <a class="nav-link" routerLink="/home">
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
+      <span>Dashboard</span></a
+    >
   </li>
 
   <!-- Divider -->
-  <hr class="sidebar-divider">
+  <hr class="sidebar-divider" />
 
   <!-- Heading -->
-  <div class="sidebar-heading">
-    Gestión
-  </div>
+  <div class="sidebar-heading">Gestión</div>
 
-  <!-- Nav Item - Pages -->
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+  <!-- Menú dinámico -->
+  <li class="nav-item" *ngFor="let item of menu; trackBy: trackById">
+    <a
+      class="nav-link collapsed"
+      href="#"
+      data-toggle="collapse"
+      [attr.data-target]="'#collapseMenu' + item.id"
+      aria-expanded="false"
+      [attr.aria-controls]="'collapseMenu' + item.id"
+    >
       <i class="fas fa-fw fa-folder"></i>
-      <span>Páginas</span>
+      <span>{{ item.titulo }}</span>
     </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div
+      [id]="'collapseMenu' + item.id"
+      class="collapse"
+      attr.aria-labelledby="headingMenu{{ item.id }}"
+      data-parent="#accordionSidebar"
+    >
       <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Ejemplos:</h6>
-        <a class="collapse-item" routerLink="/page1">Página 1</a>
-        <a class="collapse-item" routerLink="/page2">Página 2</a>
+        <h6 class="collapse-header">Submenú:</h6>
+        <a
+          class="collapse-item"
+          *ngFor="let sub of item.subMenu; trackBy: trackById"
+          [routerLink]="sub.ruta"
+        >
+          {{ sub.titulo }}
+        </a>
       </div>
     </div>
   </li>
 
   <!-- Divider -->
-  <hr class="sidebar-divider d-none d-md-block">
+  <hr class="sidebar-divider d-none d-md-block" />
 
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">

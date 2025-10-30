@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold d-flex justify-content-between align-items-center">
+      <span>Cierre de Procesos por Periodo</span>
+      <div>
+        <button type="button" class="btn btn-outline-secondary btn-sm me-1" title="Actualizar">
+          <i class="fas fa-sync-alt"></i> Actualizar
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm me-1" title="Expandir">
+          <i class="fas fa-expand"></i> Expandir
+        </button>
+        <button type="button" class="btn btn-outline-primary btn-sm me-1" title="Configuración Masiva">
+          <i class="fas fa-cogs"></i> Cfg. Masiva
+        </button>
+        <button type="button" class="btn btn-outline-danger btn-sm me-1" title="Eliminar Configuración">
+          <i class="fas fa-trash"></i> Eliminar Cfg.
+        </button>
+        <button type="button" class="btn btn-outline-info btn-sm me-1" title="Abierto">
+          Abierto
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm" title="Cerrado">
+          Cerrado
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="area" class="form-label">Área</label>
+            <input id="area" type="text" class="form-control" formControlName="area" />
+          </div>
+          <div class="col-md-4">
+            <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+            <input id="fechaInicio" type="date" class="form-control" formControlName="fechaInicio" />
+          </div>
+          <div class="col-md-4">
+            <label for="fechaCierre" class="form-label">Fecha Cierre</label>
+            <input id="fechaCierre" type="date" class="form-control" formControlName="fechaCierre" />
+          </div>
+        </div>
+        <div class="table-responsive mb-3">
+          <table class="table table-bordered table-sm text-center align-middle mb-0">
+            <thead class="thead-light">
+              <tr>
+                <th style="width: 120px;">Cod. Proceso</th>
+                <th style="width: 200px;">Proceso</th>
+                <th *ngFor="let mes of meses" style="width: 60px;">{{ mes }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let proceso of procesos; let i = index">
+                <td>{{ proceso.codigo }}</td>
+                <td>{{ proceso.nombre }}</td>
+                <td *ngFor="let mes of meses; let j = index">
+                  <input type="checkbox" [formControl]="getMesControl(i, j)" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-end">
+            <button type="submit" class="btn btn-success mr-2" [disabled]="form.invalid">Guardar</button>
+            <button type="button" class="btn btn-danger ms-2">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

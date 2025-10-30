@@ -1,0 +1,118 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 sidebar-btns">
+			<div class="d-flex flex-column">
+				<button class="btn btn-outline-success mb-2" (click)="nuevoCentro()">
+					<i class="fa fa-plus"></i> Nuevo
+				</button>
+				<button class="btn btn-outline-info mb-2" (click)="exportarCentros()">
+					<i class="fa fa-file-excel-o"></i> Exportar
+				</button>
+				<button class="btn btn-outline-secondary mb-2" (click)="descargarFormato()">
+					<i class="fa fa-download"></i> Descargar Formato
+				</button>
+				<button class="btn btn-outline-primary mb-2" (click)="imprimirCentros()">
+					<i class="fa fa-print"></i> Imprimir
+				</button>
+				<button class="btn btn-outline-danger mb-2" (click)="cancelar()">
+					<i class="fa fa-times"></i> Cancelar
+				</button>
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div class="card">
+				<div class="card-header">
+					<h5 class="mb-0">Mantenimiento de Centro de Costos</h5>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover table-sm">
+							<thead class="thead-light">
+								<tr>
+									<th>Código</th>
+									<th>Descripción</th>
+									<th>Nom. Corto</th>
+									<th>Estado</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let centro of centros">
+									<td>{{ centro.codigo }}</td>
+									<td>{{ centro.descripcion }}</td>
+									<td>{{ centro.nombreCorto }}</td>
+									<td>
+										<input type="checkbox" [checked]="centro.estado" disabled>
+									</td>
+									<td>
+										<button class="btn btn-sm btn-warning mr-1" (click)="editar(centro)">
+											<i class="fa fa-edit"></i>
+										</button>
+										<button class="btn btn-sm btn-danger" (click)="eliminar(centro)">
+											<i class="fa fa-trash"></i>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- Modal edición simple -->
+						<div *ngIf="editCentro" class="modal fade show d-block" tabindex="-1" style="background:rgba(0,0,0,0.2);">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">Editar centro de costo</h5>
+										<button type="button" class="close" (click)="cancelarEdicion()">&times;</button>
+									</div>
+									<div class="modal-body">
+										<form (ngSubmit)="guardarEdicion()">
+											<div class="form-group">
+												<label>Código</label>
+												<input class="form-control" [(ngModel)]="editForm.codigo" name="codigo" readonly>
+											</div>
+											<div class="form-group">
+												<label>Descripción</label>
+												<input class="form-control" [(ngModel)]="editForm.descripcion" name="descripcion">
+											</div>
+											<div class="form-group">
+												<label>Nom. Corto</label>
+												<input class="form-control" [(ngModel)]="editForm.nombreCorto" name="nombreCorto">
+											</div>
+											<div class="form-group">
+												<label>Estado</label>
+												<input type="checkbox" [(ngModel)]="editForm.estado" name="estado">
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" (click)="cancelarEdicion()">Cancelar</button>
+												<button type="submit" class="btn btn-primary">Guardar</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Paginación -->
+						<nav *ngIf="total > pageSize" aria-label="Paginación">
+							<ul class="pagination justify-content-center">
+								<li class="page-item" [class.disabled]="page === 1">
+									<button class="page-link" (click)="cambiarPagina(page - 1)" [disabled]="page === 1">Anterior</button>
+								</li>
+								<li class="page-item" *ngFor="let p of pageNumbers" [class.active]="page === p">
+									<button class="page-link" (click)="cambiarPagina(p)">{{ p }}</button>
+								</li>
+								<li class="page-item" [class.disabled]="page === totalPages">
+									<button class="page-link" (click)="cambiarPagina(page + 1)" [disabled]="page === totalPages">Siguiente</button>
+								</li>
+							</ul>
+						</nav>
+						<div *ngIf="loading" class="text-center py-3">
+							<span class="spinner-border spinner-border-sm"></span> Cargando...
+						</div>
+						<div *ngIf="!loading && centros.length === 0" class="text-center py-3">
+							No hay registros.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

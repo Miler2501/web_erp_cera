@@ -1,0 +1,31 @@
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <label for="proceso" class="form-label">Proceso</label>
+      <input id="proceso" type="text" class="form-control" formControlName="proceso" />
+    </div>
+    <div class="col-md-4">
+      <label for="asunto" class="form-label">Asunto</label>
+      <input id="asunto" type="text" class="form-control" formControlName="asunto" />
+    </div>
+    <div class="col-md-4">
+      <label for="saludo" class="form-label">Saludo</label>
+      <input id="saludo" type="text" class="form-control" formControlName="saludo" />
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="mensaje" class="form-label">Mensaje</label>
+      <textarea id="mensaje" class="form-control" formControlName="mensaje" rows="3"></textarea>
+    </div>
+    <div class="col-md-6">
+      <label for="despedida" class="form-label">Despedida</label>
+      <input id="despedida" type="text" class="form-control" formControlName="despedida" />
+    </div>
+  </div>
+  <div class="form-check mb-3">
+    <input id="principal" type="checkbox" class="form-check-input" formControlName="principal" />
+    <label for="principal" class="form-check-label">Principal</label>
+  </div>
+  <button type="submit" class="btn btn-success">Guardar estructura</button>
+</form>

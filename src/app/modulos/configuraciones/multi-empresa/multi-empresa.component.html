@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Configuración Multi Empresas</div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <div class="form-group mb-2">
+              <label>Código Grupo:</label>
+              <input type="text" class="form-control" formControlName="codigoGrupo" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group mb-2">
+              <label>Nombre del Grupo:</label>
+              <input type="text" class="form-control" formControlName="nombreGrupo" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group mb-2 mt-4">
+              <label>
+                <input type="checkbox" formControlName="indicadorActivo" /> Indicador Activo
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-end">
+            <button type="submit" class="btn btn-primary me-2" [disabled]="form.invalid">{{ editando ? 'Actualizar' : 'Guardar' }}</button>
+            <button *ngIf="editando" type="button" class="btn btn-secondary" (click)="cancelarEdicion()">Cancelar</button>
+          </div>
+        </div>
+      </form>
+      <div class="table-responsive mt-4">
+        <table class="table table-bordered table-sm">
+          <thead class="thead-light">
+            <tr>
+              <th>Código Grupo</th>
+              <th>Nombre del Grupo</th>
+              <th>Indicador Activo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let grupo of grupos">
+              <td>{{ grupo.codigoGrupo }}</td>
+              <td>{{ grupo.nombreGrupo }}</td>
+              <td>
+                <span *ngIf="grupo.indicadorActivo">Sí</span>
+                <span *ngIf="!grupo.indicadorActivo">No</span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-warning me-1" (click)="editarGrupo(grupo)"><i class="fa fa-edit"></i> Editar</button>
+                <button class="btn btn-sm btn-danger" (click)="eliminarGrupo(grupo)"><i class="fa fa-trash"></i> Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-between align-items-center mt-2">
+          <button class="btn btn-outline-primary btn-sm" (click)="paginaAnterior()" [disabled]="page === 1">Anterior</button>
+          <span>Página {{ page }}</span>
+          <button class="btn btn-outline-primary btn-sm" (click)="paginaSiguiente()" [disabled]="page * pageSize >= totalGrupos">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

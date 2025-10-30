@@ -1,0 +1,49 @@
+<h2 mat-dialog-title class="text-center">Configuración de Correo</h2>
+<form [formGroup]="form" class="p-3">
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <label class="form-label">Proceso :</label>
+      <input type="text" class="form-control" formControlName="proceso" />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Nombre de Envío :</label>
+      <input type="text" class="form-control" formControlName="nombreEnvio" />
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <label class="form-label">Tipo de Conexión :</label>
+      <select class="form-select" formControlName="tipoConexion">
+        <option *ngFor="let tipo of tiposConexion" [value]="tipo">{{ tipo }}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Correo :</label>
+      <input type="email" class="form-control" formControlName="correo" />
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <label class="form-label">Contraseña :</label>
+      <input type="password" class="form-control" formControlName="contrasena" />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Servidor :</label>
+      <input type="text" class="form-control" formControlName="servidor" />
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <label class="form-label">Puerto :</label>
+      <input type="text" class="form-control" formControlName="puerto" />
+    </div>
+  </div>
+  <div class="d-flex justify-content-end mt-3">
+    <button type="button" class="btn btn-success me-2" (click)="guardar()">
+      <i class="fas fa-save"></i> Guardar
+    </button>
+    <button type="button" class="btn btn-danger" (click)="cancelar()">
+      <i class="fas fa-times"></i> Cancelar
+    </button>
+  </div>
+</form>

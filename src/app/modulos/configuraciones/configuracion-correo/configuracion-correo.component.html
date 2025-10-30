@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <ul class="nav nav-tabs mb-3" id="correoTabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="envio-tab" data-toggle="tab" href="#envio" role="tab" aria-controls="envio" aria-selected="true">Envío de Correo</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="estructura-tab" data-toggle="tab" href="#estructura" role="tab" aria-controls="estructura" aria-selected="false">Estructura del Mensaje</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="correoTabsContent">
+    <div class="tab-pane fade show active" id="envio" role="tabpanel" aria-labelledby="envio-tab">
+      <div class="card mb-4">
+        <div class="card-header font-weight-bold">Envío de correo</div>
+        <div class="card-body">
+          <form [formGroup]="form">
+            <div class="mb-3 d-flex align-items-center gap-2">
+              <button type="button" class="btn btn-primary btn-sm" (click)="agregarCorreo()">
+                <i class="fas fa-plus"></i> Insertar
+              </button>
+            </div>
+            <div class="table-responsive mb-3">
+              <table class="table table-bordered table-sm text-center align-middle mb-0">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Puerto</th>
+                    <th>Host</th>
+                    <th>Correo</th>
+                    <th>Nombre de Envío</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let correoFormGroup of correosPaginados; let i = index"
+                    [formGroup]="correoFormGroup"
+                  >
+                    <td>
+                      <input type="text" class="form-control form-control-sm" formControlName="puerto" />
+                    </td>
+                    <td>
+                      <input type="text" class="form-control form-control-sm" formControlName="host" />
+                    </td>
+                    <td>
+                      <input type="email" class="form-control form-control-sm" formControlName="correo" />
+                    </td>
+                    <td>
+                      <input type="text" class="form-control form-control-sm" formControlName="nombreEnvio" />
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-secondary btn-sm me-1" (click)="abrirModalEditar((paginaActual - 1) * registrosPorPagina + i)"><i class="fas fa-edit"></i></button>
+                      <button type="button" class="btn btn-danger btn-sm" (click)="eliminarCorreo((paginaActual - 1) * registrosPorPagina + i)"><i class="fas fa-times"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="estructura" role="tabpanel" aria-labelledby="estructura-tab">
+      <!-- Aquí puedes agregar el contenido de la estructura del mensaje -->
+      <div class="card mb-4">
+        <div class="card-header font-weight-bold">Estructura del Mensaje</div>
+        <div class="card-body">
+          <app-estructura-mensaje [form]="estructuraMensajeForm" (guardarEstructura)="guardarEstructuraMensaje($event)"></app-estructura-mensaje>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

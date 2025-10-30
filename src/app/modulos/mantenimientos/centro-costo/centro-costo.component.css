@@ -1,0 +1,9 @@
+.card {
+  margin-top: 20px;
+}
+.table th, .table td {
+  vertical-align: middle;
+}
+.sidebar-btns {
+  min-width: 180px;
+}
