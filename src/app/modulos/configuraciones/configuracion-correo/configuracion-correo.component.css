@@ -1,0 +1,6 @@
+.table th, .table td {
+  vertical-align: middle !important;
+}
+.gap-2 {
+  gap: 0.5rem;
+}

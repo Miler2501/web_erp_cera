@@ -1,0 +1,133 @@
+<div class="container-fluid">
+  <div class="card mb-4">
+    <div class="card-header font-weight-bold">Asignar Centro Costos a Usuarios</div>
+    <div class="card-body">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                <div class="card-header font-weight-bold">Usuarios</div>
+                <div class="card-body p-2">
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-sm mb-0">
+                        <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Asignar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let user of usuarios; let i = index">
+                            <td>{{ user.usuario }}</td>
+                            <td>{{ user.nombre }}</td>
+                            <td>
+                            <input type="checkbox" [formControl]="getUsuarioControl(i)" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                <div class="card-header font-weight-bold">Centro de Costos</div>
+                <div class="card-body p-2">
+                    <!-- Aquí va la tabla de Centro de Costos -->
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-sm mb-0">
+                        <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Centro de Costos</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Ejemplo de datos estáticos, reemplazar por *ngFor si hay datos -->
+                        <tr>
+                            <td>00100</td>
+                            <td>MOLIENDA</td>
+                        </tr>
+                        <tr>
+                            <td>00200</td>
+                            <td>FORMADO</td>
+                        </tr>
+                        <!-- ... -->
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100 mb-3">
+                <div class="card-header font-weight-bold">Sub Centro de Costos</div>
+                <div class="card-body p-2">
+                    <!-- Aquí va la tabla de Sub Centro de Costos -->
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-sm mb-0">
+                        <thead>
+                        <tr>
+                            <th>Código SCC</th>
+                            <th>Sub Centro de Costos</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Ejemplo de datos estáticos, reemplazar por *ngFor si hay datos -->
+                        <tr>
+                            <td>001001</td>
+                            <td>MATERIAL DIRECTO</td>
+                        </tr>
+                        <tr>
+                            <td>001002</td>
+                            <td>MANO DE OBRA</td>
+                        </tr>
+                        <!-- ... -->
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header font-weight-bold">Sub Sub Centro de Costos</div>
+                    <div class="card-body p-2">
+                    <!-- Aquí va la tabla de Sub Sub Centro de Costos -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm mb-0">
+                        <thead>
+                            <tr>
+                            <th>Código SSCC</th>
+                            <th>Sub Sub Centro de Costos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Ejemplo de datos estáticos, reemplazar por *ngFor si hay datos -->
+                            <tr>
+                            <td>00100101</td>
+                            <td>TIERRA</td>
+                            </tr>
+                            <tr>
+                            <td>00100102</td>
+                            <td>ARCILLA</td>
+                            </tr>
+                            <!-- ... -->
+                        </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-end">
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CertificadosService } from './certificados.service';
 import { CommonModule, DatePipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-certificados',
   standalone: true,
   templateUrl: './certificados.component.html',
   styleUrls: ['./certificados.component.css'],
-  imports: [ReactiveFormsModule, CommonModule, DatePipe]
+  imports: [ReactiveFormsModule, CommonModule, DatePipe, RouterModule]
 })
 export class CertificadosComponent {
   form: FormGroup;

@@ -1,0 +1,90 @@
+<div class="card">
+		<div class="card-header d-flex justify-content-between align-items-center">
+			<h5 class="mb-0">Mantenimiento de áreas</h5>
+			<div>
+				<button class="btn btn-success btn-sm mr-2" (click)="nuevoArea()">
+					<i class="fa fa-plus"></i> Nuevo
+				</button>
+				<button class="btn btn-info btn-sm mr-2" (click)="exportarAreas()">
+					<i class="fa fa-file-excel-o"></i> Exportar
+				</button>
+				<button class="btn btn-secondary btn-sm" (click)="descargarFormato()">
+					<i class="fa fa-download"></i> Descargar Formato
+				</button>
+			</div>
+		</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-sm">
+				<thead class="thead-light">
+					<tr>
+						<th>Código</th>
+						<th>Descripción</th>
+						<th>Nombre Corto</th>
+						<th>Estado</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+								<tr *ngFor="let area of areas">
+									<td>{{ area.codigo }}</td>
+									<td>{{ area.descripcion }}</td>
+									<td>{{ area.nombreCorto }}</td>
+									<td>
+										<input type="checkbox" [checked]="area.estado" disabled>
+									</td>
+									<td>
+										<button class="btn btn-sm btn-warning mr-1" (click)="editar(area)">
+											<i class="fa fa-edit"></i>
+										</button>
+										<button class="btn btn-sm btn-danger" (click)="eliminar(area)">
+											<i class="fa fa-trash"></i>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						<!-- Modal edición simple -->
+						<div *ngIf="editArea" class="modal fade show d-block" tabindex="-1" style="background:rgba(0,0,0,0.2);">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">Editar área</h5>
+										<button type="button" class="close" (click)="cancelarEdicion()">&times;</button>
+									</div>
+									<div class="modal-body">
+										<form (ngSubmit)="guardarEdicion()">
+											<div class="form-group">
+												<label>Código</label>
+												<input class="form-control" [(ngModel)]="editForm.codigo" name="codigo" readonly>
+											</div>
+											<div class="form-group">
+												<label>Descripción</label>
+												<input class="form-control" [(ngModel)]="editForm.descripcion" name="descripcion">
+											</div>
+											<div class="form-group">
+												<label>Nombre Corto</label>
+												<input class="form-control" [(ngModel)]="editForm.nombreCorto" name="nombreCorto">
+											</div>
+											<div class="form-group">
+												<label>Estado</label>
+												<input type="checkbox" [(ngModel)]="editForm.estado" name="estado">
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" (click)="cancelarEdicion()">Cancelar</button>
+												<button type="submit" class="btn btn-primary">Guardar</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+			</table>
+			<div *ngIf="loading" class="text-center py-3">
+				<span class="spinner-border spinner-border-sm"></span> Cargando...
+			</div>
+			<div *ngIf="!loading && areas.length === 0" class="text-center py-3">
+				No hay registros.
+			</div>
+		</div>
+	</div>
+</div>
