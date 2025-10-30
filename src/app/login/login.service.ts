@@ -29,11 +29,7 @@ export class LoginService {
               celular: '999999999'
             },
             menu: [
-              { id: 1, nombre: 'Dashboard', ruta: '/dashboard', icono: 'fa-home' },
-              { id: 2, nombre: 'Configuraciones', ruta: '/configuraciones', icono: 'fa-cog', hijos: [
-                { id: 3, nombre: 'General', ruta: '/configuraciones/general' },
-                { id: 4, nombre: 'Movimientos', ruta: '/configuraciones/movimientos' }
-              ] }
+              { id: 1, nombre: 'Dashboard', ruta: '/dashboard', icono: 'fa-home' }
             ],
             permisos: [
               { id: 1, nombre: 'VER_CONFIGURACIONES' },

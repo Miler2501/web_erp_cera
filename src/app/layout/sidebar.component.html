@@ -30,62 +30,36 @@
     <a
       class="nav-link collapsed"
       href="#"
-      data-toggle="collapse"
-      [attr.data-target]="'#collapseMenu' + item.id"
-      aria-expanded="false"
+      (click)="toggleCollapse(item.id); $event.preventDefault();"
+      [attr.aria-expanded]="isCollapsed(item.id) ? 'true' : 'false'"
       [attr.aria-controls]="'collapseMenu' + item.id"
     >
       <i class="fas fa-fw fa-folder"></i>
-      <span>{{ item.titulo }}</span>
+      <span class="sidebar-menu-text">{{ item.titulo }}</span>
     </a>
     <div
       [id]="'collapseMenu' + item.id"
       class="collapse"
+      [class.show]="isCollapsed(item.id)"
       attr.aria-labelledby="headingMenu{{ item.id }}"
       data-parent="#accordionSidebar"
     >
-      <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Submenú:</h6>
-        <a
-          class="collapse-item"
-          *ngFor="let sub of item.subMenu; trackBy: trackById"
-          [routerLink]="sub.ruta"
-        >
-          {{ sub.titulo }}
-        </a>
-      </div>
-    </div>
-  </li>
-    <li class="nav-item" *ngFor="let item of menu; trackBy: trackById">
-      <a
-        class="nav-link collapsed"
-        href="#"
-        (click)="toggleCollapse(item.id)"
-        [attr.aria-expanded]="isCollapsed(item.id) ? 'true' : 'false'"
-        [attr.aria-controls]="'collapseMenu' + item.id"
-      >
-        <i class="fas fa-fw fa-folder"></i>
-        <span class="sidebar-menu-text">{{ item.titulo }}</span>
-      </a>
-      <div
-        [id]="'collapseMenu' + item.id"
-        [class.collapse]="!isCollapsed(item.id)"
-        [class.show]="isCollapsed(item.id)"
-        attr.aria-labelledby="headingMenu{{ item.id }}"
-        data-parent="#accordionSidebar"
-      >
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Submenú:</h6>
+      <div class="py-2 collapse-inner rounded" style="background-color: #a9a9a9;">
+        <h6 class="collapse-header text-dark">Submenú:</h6>
+        <ng-container *ngFor="let sub of item.subMenu; trackBy: trackById">
           <a
             class="collapse-item sidebar-menu-text"
-            *ngFor="let sub of item.subMenu; trackBy: trackById"
             [routerLink]="sub.ruta"
+            data-toggle="tooltip"
+            title="{{ sub.titulo }}"
           >
             {{ sub.titulo }}
           </a>
-        </div>
+        </ng-container>
       </div>
-    </li>
+    </div>
+  </li>
+    <!-- ...existing code... -->
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block" />
