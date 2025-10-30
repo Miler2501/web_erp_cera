@@ -70,6 +70,8 @@ export class SidebarComponent {
     }
   ];
 
+  collapsedMenus: { [key: number]: boolean } = {};
+
   constructor(private el: ElementRef, private renderer: Renderer2) {
     // Ordenar descendente por 'orden'
     this.menu = this.menu.sort((a, b) => b.orden - a.orden);
@@ -96,4 +98,13 @@ export class SidebarComponent {
   trackById(index: number, item: any): any {
     return item.id;
   }
+
+  toggleCollapse(id: number) {
+    this.collapsedMenus[id] = !this.collapsedMenus[id];
+  }
+
+  isCollapsed(id: number): boolean {
+    return !!this.collapsedMenus[id];
+  }
+
 }
